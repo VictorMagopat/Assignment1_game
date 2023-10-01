@@ -31,6 +31,32 @@ TheseAreTheRoles = """Would you like to be <The Spy> or the <The Thief>.
             Enter 1 for <The Spy>
             Enter 2 for <The Thief>"""
 
+ThisIsChallege_1 = """
+      Challenge 1___________________________
+      <1> Sneak in on an army vehicle
+      <2> Climb building and enter the vents
+      <3> Main entrance"""
+
+ThisIsChallege_2 = """
+      Challenge 2___________________________
+      <1> Bluff past 
+      <2> Sneak past
+      <3> Suprise attack"""
+
+ThisIsChallege_3 = """
+      Challenge 3___________________________
+      <1> Ask the head scientist for location
+      <2> Intimidate head scientist"""
+
+ThisIsChallege_4 = """
+      Challenge 4___________________________
+      <1> Unlock vault"""
+
+ThisIsChallege_4 = """
+      Challenge 5___________________________
+      <1> Sneak out
+      <2> Bluff past"""
+
 # the user is choosing to play the game or exit
 def StartMenu():
       while True:
@@ -87,10 +113,13 @@ while True:
       ActiveMission = 1
       while ActiveMission == 1:
             if RunChallenge == 1:
+                print(ThisIsChallege_1)
                 Game.Challenge_1() 
             elif RunChallenge == 2:
+                print(ThisIsChallege_2)
                 Game.Challenge_2()
             elif RunChallenge == 3:
+                print(ThisIsChallege_3)
                 Game.Challenge_3()
             else:
                 print("This challenge is out of range.")
@@ -104,10 +133,11 @@ while True:
                 ActiveMission = 0
 
             Game.SetCurrentChallenge(RunChallenge);
-            PressEnterToContinuue()
+#            PressEnterToContinuue()
       
       if (Health <= 0) or (Warnings >= 3):
           print("You failed this mission.")
       else:
           print("You succesfully completed the mission!")
       PressEnterToContinuue()
+
