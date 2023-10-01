@@ -1,5 +1,8 @@
 # This file is Game.py created on 2023.09.29
 import random
+import Role1
+import Role2
+
 #steal migufin that is in a vault
 # pick Spy, Theif, Bounty hunter
 #each will hav 1 uniqe chalenge 
@@ -120,3 +123,188 @@ def challenge_5():
     elif user_choice == 2:
         pass_result = pass_challenge(6, 1, attribute, 0)
         return pass_result
+
+
+
+###############################################################################################
+
+# these are the attributes of the actor playing the game
+ActorRole = ""
+ActorHealth = 0
+ActorDexterity = 0
+ActorIntelligence = 0
+ActorCharisma	= 0
+ActorCombat = 0
+
+# stores: 1 for The Spy or 2 for The Thief. Error-0
+TheActor = 0
+
+# stores the current challenge
+CurrentChallenge = 1
+
+# stores the number of warnings
+NoOfWarnings = 0
+
+# returns the actor's health
+def GetActorHealth():
+    return ActorHealth
+
+# returns the string of the actor
+def GetTheCharacterRole():
+    return ActorRole
+
+# returns the number of warnings
+def GetNoOfWarnings():
+    return NoOfWarnings
+
+# sets the number of warnings
+def SetNoOfWarnings(NewWarnings):
+    global NoOfWarnings
+    NoOfWarnings = NewWarnings
+
+# returns the games' current challenge
+def GetCurrentChallenge():
+    return CurrentChallenge;
+
+# sets the game's current challenge
+def SetCurrentChallenge(NewChallenge):
+    global CurrentChallenge
+    CurrentChallenge = NewChallenge
+
+# sets the role of TheActor in the game
+def SetTheActor (TheCharacter):
+    global TheActor
+    global ActorRole
+    global ActorHealth
+    global ActorDexterity 
+    global ActorIntelligence
+    global ActorCharisma
+    global ActorCombat
+    global NoOfWarnings
+    global CurrentChallenge
+    if TheCharacter == 1:
+        TheActor = 1
+        ActorRole = Role1.WhatIsYourCharacter()
+        ActorHealth = Role1.WhatIsYourHealth()
+        ActorDexterity = Role1.WhatIsYourDexterity()
+        ActorIntelligence = Role1.WhatIsYourIntelligence()
+        ActorCharisma	= Role1.WhatIsYourCharisma()
+        ActorCombat = Role1.WhatIsYourCombat()
+    elif TheCharacter == 2:
+        TheActor = 2
+        ActorRole = Role2.WhatIsYourCharacter()
+        TheActor = Role2.WhatIsYourCharacter()
+        ActorHealth = Role2.WhatIsYourHealth()
+        ActorDexterity = Role2.WhatIsYourDexterity()
+        ActorIntelligence = Role2.WhatIsYourIntelligence()
+        ActorCharisma	= Role2.WhatIsYourCharisma()
+        ActorCombat = Role2.WhatIsYourCombat()
+    else:
+        TheCharacter = 0
+        ActorRole = "Invalid value for the Actor."
+    NoOfWarnings = 0
+    CurrentChallenge = 0
+
+
+# retrieve the attributes of the character and returns a string
+def GetTheCharacterAtributes():
+    global TheActor
+    global ActorRole
+    global ActorHealth
+    global ActorDexterity
+    global ActorIntelligence
+    global ActorCharisma
+    global ActorCombat
+
+    BuildTheString = " These are my attributes:\n"
+    BuildTheString += " [ Health: " + str(ActorHealth)
+    BuildTheString += "; Dexterity: " + str(ActorDexterity)
+    BuildTheString += "; Intelligence: " + str(ActorIntelligence)
+    BuildTheString += "; Charisma: " + str(ActorCharisma)
+    BuildTheString += "; Combat: " + str(ActorCombat) + "]"
+    return BuildTheString
+
+
+
+def Number_checkv(find_int):
+    if find_int.isnumeric() == True:
+        return True
+    else:
+        return False
+
+
+def Number_choicev(Choice_posible):
+    while True:
+        user_selection = input("Please enter the number coresponding to your choice: ")
+        is_number = Number_check(user_selection)
+        if Number_check(is_number) == True:
+            is_number = int(is_number)
+            if is_number == 1 and Choice_posible >= 1:
+                return 1
+            elif is_number == 2 and Choice_posible >= 2:
+                return 2
+            elif is_number == 3 and Choice_posible >= 3:
+                return 3
+            else:
+                print("Please input a proper selection")
+
+
+def NothingHere():
+    x = input("thing:")
+    Number_choice(x)
+    return 0
+
+
+#def time_of_day():
+    print("What time do you choose to start your raid\n"
+          "keep in mind that the more time you wait the higher the chance of guards hearing about the raid")
+#    while True
+
+
+def dice_rolev(x):
+    dice_total = 0
+    while x >= 1:
+        dice_result = random.randrange(1,6)
+        dice_total = dice_total + dice_result
+        x = x - 1
+    return dice_total
+
+def SomethingHere():
+    x = int(input("Please input the number of dice you want to roll: "))
+
+    dice_test = dice_role(x)
+
+    print(dice_test)
+    print("how would you like to enter the bulding")
+
+
+def Challenge_1v():
+    global NoOfWarnings
+    global ActorHealth
+    NoOfWarnings += 1
+    ActorHealth -= 1
+    print("This is challenge 1")
+
+
+def Challenge_2v():
+    global NoOfWarnings
+    global ActorHealth
+    NoOfWarnings += 1
+    ActorHealth -= 1
+    print("This is challenge 2")
+
+def Challenge_3v():
+    global NoOfWarnings
+    global ActorHealth
+    NoOfWarnings += 1
+    ActorHealth -= 1
+    print("This is challenge 3")
+
+def Challenge_4v():
+    global NoOfWarnings
+    global ActorHealth
+    NoOfWarnings += 1
+    ActorHealth -= 1
+    print("This is challenge 4")
+
+
