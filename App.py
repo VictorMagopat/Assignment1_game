@@ -2,6 +2,9 @@
 #take user input
 #Explenation
 
+import Role1
+import Role2
+
 def start_menu():
       while True:
             menu_start = input("Would you like to start the game: ")
@@ -25,5 +28,9 @@ print("An enemy nation has developed a bioweapon that is able to infect and wipe
     "Second is the greatest thief, he has the best skill set and has the experience of many successful heists.\n"
     "There will be a 24-hour window where both the cure and weapon will be in the same vault.")
 
+
+Role1.WhatIsYourCharacter()
+
+Role2.WhatIsYourCharacter()
 
 #story_dump = input("") 
