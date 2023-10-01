@@ -1,18 +1,12 @@
 #This is the App.py file. Created 2023.09.29
-<<<<<<< HEAD
+
 # This file implements the interaction with the user.
 # Sends the user's input to the game engine.
 
 #import Role1
 #import Role2
 import Game
-=======
-#take user input
-#Explenation
-import Game
-import Role1
-import Role2
->>>>>>> bb936f62ed948e1689e4f07aa7e6784d39de4979
+
 
 # this is the welcome string
 WelcomeMessage = "Welcome to SAVE THE WORLD adventure! This is a text based game.\n"

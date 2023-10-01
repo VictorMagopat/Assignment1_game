@@ -225,60 +225,7 @@ def GetTheCharacterAtributes():
     return BuildTheString
 
 
-
-def Number_checkv(find_int):
-    if find_int.isnumeric() == True:
-        return True
-    else:
-        return False
-
-
-def Number_choicev(Choice_posible):
-    while True:
-        user_selection = input("Please enter the number coresponding to your choice: ")
-        is_number = Number_check(user_selection)
-        if Number_check(is_number) == True:
-            is_number = int(is_number)
-            if is_number == 1 and Choice_posible >= 1:
-                return 1
-            elif is_number == 2 and Choice_posible >= 2:
-                return 2
-            elif is_number == 3 and Choice_posible >= 3:
-                return 3
-            else:
-                print("Please input a proper selection")
-
-
-def NothingHere():
-    x = input("thing:")
-    Number_choice(x)
-    return 0
-
-
-#def time_of_day():
-    print("What time do you choose to start your raid\n"
-          "keep in mind that the more time you wait the higher the chance of guards hearing about the raid")
-#    while True
-
-
-def dice_rolev(x):
-    dice_total = 0
-    while x >= 1:
-        dice_result = random.randrange(1,6)
-        dice_total = dice_total + dice_result
-        x = x - 1
-    return dice_total
-
-def SomethingHere():
-    x = int(input("Please input the number of dice you want to roll: "))
-
-    dice_test = dice_role(x)
-
-    print(dice_test)
-    print("how would you like to enter the bulding")
-
-
-def Challenge_1v():
+def Challenge_1():
     global NoOfWarnings
     global ActorHealth
     NoOfWarnings += 1
@@ -286,21 +233,21 @@ def Challenge_1v():
     print("This is challenge 1")
 
 
-def Challenge_2v():
+def Challenge_2():
     global NoOfWarnings
     global ActorHealth
     NoOfWarnings += 1
     ActorHealth -= 1
     print("This is challenge 2")
 
-def Challenge_3v():
+def Challenge_3():
     global NoOfWarnings
     global ActorHealth
     NoOfWarnings += 1
     ActorHealth -= 1
     print("This is challenge 3")
 
-def Challenge_4v():
+def Challenge_4():
     global NoOfWarnings
     global ActorHealth
     NoOfWarnings += 1
