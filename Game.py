@@ -47,36 +47,7 @@ def SetCurrentChallenge(NewChallenge):
     CurrentChallenge = NewChallenge
 
 
-# the user selects the option
-def SelectionMenu(max_posible):
-    while True:        
-        if max_posible == 2:
-            print("You can choose 1 or 2")
-            menu_start = input("What is your selection?  ")
-            if menu_start == "1":
-                return 1  
-            elif menu_start == "2":
-                return 2
-            elif menu_start == "q":
-                exit()
-            else:
-                print("Please enter: <1> or <2> ") 
-        else: 
-            print("You can choose 1, 2 or 3")
-            menu_start = input("What is your selection?  ")
-            if menu_start == "1":
-                return 1  
-            elif menu_start == "2":
-                return 2
-            elif menu_start == "3":
-                return 3
-            elif menu_start == "q":
-                exit()
-            else:
-                print("Please enter: <1>, <2> or <3>") 
-
-
-
+# returns the result of the dice roll
 def dice_roll(x):
     dice_total = 0
     while x >= 1:
@@ -85,6 +56,7 @@ def dice_roll(x):
         x = x - 1
     return dice_total
 
+# returns True if the challenge is passed, False if it fails.
 def pass_challenge(dificulty, dice_count, attribute, attribute_2):
     dice_total = dice_roll(dice_count)
     total_number = dice_total + attribute + attribute_2
@@ -93,14 +65,13 @@ def pass_challenge(dificulty, dice_count, attribute, attribute_2):
     else:
         return False
 
-
-def Challenge_1():
+# Challange 1 runs here
+def Challenge_1(user_choice):
     global TheActor
     global ActorDexterity 
     global ActorIntelligence
     global ActorCharisma
     roll = 1
-    user_choice = SelectionMenu(3)
     if user_choice == 1:
         pass_result = pass_challenge(5, 1, ActorDexterity, 0)
         return pass_result
@@ -110,12 +81,11 @@ def Challenge_1():
     elif user_choice == 3 and roll == 1:
         return True
 
-
-def Challenge_2():
+# Challange 2 runs here
+def Challenge_2(user_choice):
     global ActorDexterity 
     global ActorIntelligence
     global ActorCharisma
-    user_choice = SelectionMenu(3)
     if user_choice == 1:
         pass_result = pass_challenge(5, 1, ActorCharisma, 0)
         return pass_result
@@ -125,13 +95,13 @@ def Challenge_2():
     elif user_choice == 3:
         return True
 
-def Challenge_3():
+# Challange 3 runs here
+def Challenge_3(user_choice):
     global TheActor
     global ActorDexterity 
     global ActorIntelligence
     global ActorCharisma
     global ActorCombat
-    user_choice = SelectionMenu(2)
     if user_choice == 1:
         pass_result = pass_challenge(5, 1, ActorIntelligence, 0)
         return pass_result
@@ -139,7 +109,8 @@ def Challenge_3():
         pass_result = pass_challenge(3, 1, ActorCombat, 0)
         return pass_result
 
-def Challenge_4():
+# Challange 4 runs here
+def Challenge_4(user_choice):
     global ActorDexterity 
     global ActorIntelligence
     global ActorCharisma
@@ -148,11 +119,11 @@ def Challenge_4():
         pass_result = pass_challenge(7, 1, ActorIntelligence, ActorDexterity)
         return pass_result
 
-def Challenge_5():
+# Challange 5 runs here
+def Challenge_5(user_choice):
     global ActorDexterity 
     global ActorIntelligence
     global ActorCharisma
-    user_choice = SelectionMenu(2)
     if user_choice == 1:
         pass_result = pass_challenge(7, 1, ActorDexterity, 0)
         return pass_result

@@ -52,7 +52,7 @@ ThisIsChallege_4 = """
       Challenge 4___________________________
       <1> Unlock vault"""
 
-ThisIsChallege_4 = """
+ThisIsChallege_5 = """
       Challenge 5___________________________
       <1> Sneak out
       <2> Bluff past"""
@@ -84,6 +84,36 @@ def CharacterMenu():
             else:
                   print("Please enter: <1> for The Spy or <2> for The Thief. [q - quit]")                  
 
+# the user selects the option
+def SelectionMenu(max_posible):
+    while True:        
+        if max_posible == 2:
+            print("You can choose 1 or 2")
+            menu_start = input("What is your selection?  ")
+            if menu_start == "1":
+                return 1  
+            elif menu_start == "2":
+                return 2
+            elif menu_start == "q":
+                exit()
+            else:
+                print("Please enter: <1> or <2> ") 
+        else: 
+            print("You can choose 1, 2 or 3")
+            menu_start = input("What is your selection?  ")
+            if menu_start == "1":
+                return 1  
+            elif menu_start == "2":
+                return 2
+            elif menu_start == "3":
+                return 3
+            elif menu_start == "q":
+                exit()
+            else:
+                print("Please enter: <1>, <2> or <3>") 
+
+
+
 def PressEnterToContinuue():
       WaitHere = input("Press <Enter> to continue")
 
@@ -114,13 +144,24 @@ while True:
       while ActiveMission == 1:
             if RunChallenge == 1:
                 print(ThisIsChallege_1)
-                Game.Challenge_1() 
+                user_choice = SelectionMenu(3)
+                Game.Challenge_1(user_choice) 
             elif RunChallenge == 2:
                 print(ThisIsChallege_2)
-                Game.Challenge_2()
+                user_choice = SelectionMenu(3)
+                Game.Challenge_2(user_choice)
             elif RunChallenge == 3:
                 print(ThisIsChallege_3)
-                Game.Challenge_3()
+                user_choice = SelectionMenu(2)
+                Game.Challenge_3(user_choice)
+            elif RunChallenge == 4:
+                print(ThisIsChallege_4)
+                user_choice = SelectionMenu(2)
+                Game.Challenge_4(user_choice)
+            elif RunChallenge == 5:
+                print(ThisIsChallege_5)
+                user_choice = SelectionMenu(2)
+                Game.Challenge_5(user_choice)                
             else:
                 print("This challenge is out of range.")
 
@@ -129,7 +170,7 @@ while True:
             Health = Game.GetActorHealth()
             print("Warnings: ", str(Warnings), " Health:", str(Health))
 
-            if (RunChallenge > 3) or (Health <= 0) or (Warnings >= 3):
+            if (RunChallenge > 5) or (Health <= 0) or (Warnings >= 3):
                 ActiveMission = 0
 
             Game.SetCurrentChallenge(RunChallenge);
