@@ -1,7 +1,7 @@
 # This file is Game.py created on 2023.09.29
 import random
-import Role1
-import Role2
+import TheSpy
+import TheThief
 
 # these are the attributes of the actor playing the game
 ActorRole = ""
@@ -118,21 +118,21 @@ def SetTheActor (TheCharacter):
 
     if TheCharacter == 1:
         TheActor = 1
-        ActorRole = Role1.WhatIsYourCharacter()
-        ActorHealth = Role1.WhatIsYourHealth()
-        ActorDexterity = Role1.WhatIsYourDexterity()
-        ActorIntelligence = Role1.WhatIsYourIntelligence()
-        ActorCharisma	= Role1.WhatIsYourCharisma()
-        ActorCombat = Role1.WhatIsYourCombat()
+        ActorRole = TheSpy.WhatIsYourCharacter()
+        ActorHealth = TheSpy.WhatIsYourHealth()
+        ActorDexterity = TheSpy.WhatIsYourDexterity()
+        ActorIntelligence = TheSpy.WhatIsYourIntelligence()
+        ActorCharisma	= TheSpy.WhatIsYourCharisma()
+        ActorCombat = TheSpy.WhatIsYourCombat()
     elif TheCharacter == 2:
         TheActor = 2
-        ActorRole = Role2.WhatIsYourCharacter()
-        TheActor = Role2.WhatIsYourCharacter()
-        ActorHealth = Role2.WhatIsYourHealth()
-        ActorDexterity = Role2.WhatIsYourDexterity()
-        ActorIntelligence = Role2.WhatIsYourIntelligence()
-        ActorCharisma	= Role2.WhatIsYourCharisma()
-        ActorCombat = Role2.WhatIsYourCombat()
+        ActorRole = TheThief.WhatIsYourCharacter()
+        TheActor = TheThief.WhatIsYourCharacter()
+        ActorHealth = TheThief.WhatIsYourHealth()
+        ActorDexterity = TheThief.WhatIsYourDexterity()
+        ActorIntelligence = TheThief.WhatIsYourIntelligence()
+        ActorCharisma	= TheThief.WhatIsYourCharisma()
+        ActorCombat = TheThief.WhatIsYourCombat()
     else:
         TheCharacter = 0
         ActorRole = "Invalid value for the Actor."

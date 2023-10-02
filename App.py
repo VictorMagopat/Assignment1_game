@@ -3,8 +3,6 @@
 # This file implements the interaction with the user.
 # Sends the user's input to the game engine.
 
-#import Role1
-#import Role2
 import Game
 import random
 
