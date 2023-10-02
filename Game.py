@@ -47,88 +47,60 @@ def SetCurrentChallenge(NewChallenge):
     CurrentChallenge = NewChallenge
 
 
-# returns the result of the dice roll
-def dice_roll(x):
-    dice_total = 0
-    while x >= 1:
-        dice_result = random.randrange(1,6)
-        dice_total = dice_total + dice_result
-        x = x - 1
-    return dice_total
-
 # returns True if the challenge is passed, False if it fails.
-def pass_challenge(dificulty, dice_count, attribute, attribute_2):
-    dice_total = dice_roll(dice_count)
-    total_number = dice_total + attribute + attribute_2
+def pass_challenge(dificulty, dice, attribute, attribute_2):
+    total_number = dice + attribute + attribute_2
     if total_number >= dificulty:
         return True
     else:
         return False
 
 # Challange 1 runs here
-def Challenge_1(user_choice):
-    global TheActor
-    global ActorDexterity 
-    global ActorIntelligence
-    global ActorCharisma
+def Challenge_1(user_choice, dice):
     roll = 1
     if user_choice == 1:
-        pass_result = pass_challenge(5, 1, ActorDexterity, 0)
+        pass_result = pass_challenge(5, dice, ActorDexterity, 0)
         return pass_result
     elif user_choice == 2:
-        pass_result = pass_challenge(4, 1, ActorDexterity, 0)
+        pass_result = pass_challenge(4, dice, ActorDexterity, 0)
         return pass_result
     elif user_choice == 3 and roll == 1:
         return True
 
 # Challange 2 runs here
-def Challenge_2(user_choice):
-    global ActorDexterity 
-    global ActorIntelligence
-    global ActorCharisma
+def Challenge_2(user_choice, dice):
     if user_choice == 1:
-        pass_result = pass_challenge(5, 1, ActorCharisma, 0)
+        pass_result = pass_challenge(5, dice, ActorCharisma, 0)
         return pass_result
     elif user_choice == 2:
-        pass_result = pass_challenge(6, 1, ActorDexterity, 0)
+        pass_result = pass_challenge(6, dice, ActorDexterity, 0)
         return pass_result
     elif user_choice == 3:
         return True
 
 # Challange 3 runs here
-def Challenge_3(user_choice):
-    global TheActor
-    global ActorDexterity 
-    global ActorIntelligence
-    global ActorCharisma
-    global ActorCombat
+def Challenge_3(user_choice, dice):
     if user_choice == 1:
-        pass_result = pass_challenge(5, 1, ActorIntelligence, 0)
+        pass_result = pass_challenge(5, dice, ActorIntelligence, 0)
         return pass_result
     elif user_choice == 2:
-        pass_result = pass_challenge(3, 1, ActorCombat, 0)
+        pass_result = pass_challenge(3, dice, ActorCombat, 0)
         return pass_result
 
 # Challange 4 runs here
-def Challenge_4(user_choice):
-    global ActorDexterity 
-    global ActorIntelligence
-    global ActorCharisma
+def Challenge_4(user_choice, dice):
     user_choice = 1
     if user_choice == 1:
-        pass_result = pass_challenge(7, 1, ActorIntelligence, ActorDexterity)
+        pass_result = pass_challenge(7, dice, ActorIntelligence, ActorDexterity)
         return pass_result
 
 # Challange 5 runs here
-def Challenge_5(user_choice):
-    global ActorDexterity 
-    global ActorIntelligence
-    global ActorCharisma
+def Challenge_5(user_choice, dice):
     if user_choice == 1:
-        pass_result = pass_challenge(7, 1, ActorDexterity, 0)
+        pass_result = pass_challenge(7, dice, ActorDexterity, 0)
         return pass_result
     elif user_choice == 2:
-        pass_result = pass_challenge(6, 1, ActorCharisma, 0)
+        pass_result = pass_challenge(6, dice, ActorCharisma, 0)
         return pass_result
 
 # sets the role of TheActor in the game
@@ -140,8 +112,10 @@ def SetTheActor (TheCharacter):
     global ActorIntelligence
     global ActorCharisma
     global ActorCombat
-    global NoOfWarnings
-    global CurrentChallenge
+
+    SetNoOfWarnings(0)
+    SetCurrentChallenge(1)
+
     if TheCharacter == 1:
         TheActor = 1
         ActorRole = Role1.WhatIsYourCharacter()
@@ -162,20 +136,10 @@ def SetTheActor (TheCharacter):
     else:
         TheCharacter = 0
         ActorRole = "Invalid value for the Actor."
-    NoOfWarnings = 0
-    CurrentChallenge = 0
-
+ 
 
 # retrieve the attributes of the character and returns a string
 def GetTheCharacterAtributes():
-    global TheActor
-    global ActorRole
-    global ActorHealth
-    global ActorDexterity
-    global ActorIntelligence
-    global ActorCharisma
-    global ActorCombat
-
     BuildTheString = " These are my attributes:\n"
     BuildTheString += " [ Health: " + str(ActorHealth)
     BuildTheString += "; Dexterity: " + str(ActorDexterity)

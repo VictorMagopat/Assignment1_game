@@ -6,7 +6,7 @@
 #import Role1
 #import Role2
 import Game
-
+import random
 
 # this is the welcome string
 WelcomeMessage = "Welcome to SAVE THE WORLD adventure! This is a text based game.\n"
@@ -113,9 +113,16 @@ def SelectionMenu(max_posible):
                 print("Please enter: <1>, <2> or <3>") 
 
 
-
+# pause until the Enter key is pressed
 def PressEnterToContinuue():
       WaitHere = input("Press <Enter> to continue")
+
+# roll the dice
+def RollTheDice():
+      WaitHere = input("Press <Enter> to run the dice")
+      dice = random.randrange(1,6)
+      print("The dice is: ", str(dice))
+      return dice
 
 
 #-------------------------------------------------------------------------------------------
@@ -141,27 +148,33 @@ while True:
       Game.SetNoOfWarnings(Warnings)
       Health = Game.GetActorHealth()
       ActiveMission = 1
+      Dice = 1
       while ActiveMission == 1:
             if RunChallenge == 1:
                 print(ThisIsChallege_1)
                 user_choice = SelectionMenu(3)
-                Game.Challenge_1(user_choice) 
+                Dice = RollTheDice()
+                Game.Challenge_1(user_choice, Dice) 
             elif RunChallenge == 2:
                 print(ThisIsChallege_2)
                 user_choice = SelectionMenu(3)
-                Game.Challenge_2(user_choice)
+                Dice = RollTheDice()                
+                Game.Challenge_2(user_choice, Dice)
             elif RunChallenge == 3:
                 print(ThisIsChallege_3)
                 user_choice = SelectionMenu(2)
-                Game.Challenge_3(user_choice)
+                Dice = RollTheDice()                
+                Game.Challenge_3(user_choice, Dice)
             elif RunChallenge == 4:
                 print(ThisIsChallege_4)
                 user_choice = SelectionMenu(2)
-                Game.Challenge_4(user_choice)
+                Dice = RollTheDice()                
+                Game.Challenge_4(user_choice, Dice)
             elif RunChallenge == 5:
                 print(ThisIsChallege_5)
                 user_choice = SelectionMenu(2)
-                Game.Challenge_5(user_choice)                
+                Dice = RollTheDice()
+                Game.Challenge_5(user_choice, Dice)              
             else:
                 print("This challenge is out of range.")
 
