@@ -48,60 +48,70 @@ def SetCurrentChallenge(NewChallenge):
 
 
 # returns True if the challenge is passed, False if it fails.
-def pass_challenge(dificulty, dice, attribute, attribute_2):
-    total_number = dice + attribute + attribute_2
-    if total_number >= dificulty:
+def pass_challenge(difficulty, dice, attribute_1, attribute_2):
+    total_number = dice + attribute_1 + attribute_2
+    if total_number >= difficulty:
         return True
     else:
         return False
 
 # Challange 1 runs here
-def Challenge_1(user_choice, dice):
-    roll = 1
+def Challenge_1_EnterBase(user_choice, dice):
+    # constants for difficulty
+    Difficutly_5 = 5
+    Difficutly_4 = 4
     if user_choice == 1:
-        pass_result = pass_challenge(5, dice, ActorDexterity, 0)
-        return pass_result
+        pass_result = pass_challenge(Difficutly_5, dice, ActorDexterity, 0)
     elif user_choice == 2:
-        pass_result = pass_challenge(4, dice, ActorDexterity, 0)
-        return pass_result
-    elif user_choice == 3 and roll == 1:
-        return True
+        pass_result = pass_challenge(Difficutly_4, dice, ActorDexterity, 0)
+    elif user_choice == 3:
+        if TheActor== 1:
+           pass_result = True
+        elif TheActor== 2:
+           pass_result = False
+    return pass_result
 
 # Challange 2 runs here
-def Challenge_2(user_choice, dice):
+def Challenge_2_EvadeGuards(user_choice, dice):
+    Difficutly_5 = 5
+    Difficutly_6 = 6
     if user_choice == 1:
-        pass_result = pass_challenge(5, dice, ActorCharisma, 0)
-        return pass_result
+        pass_result = pass_challenge(Difficutly_5, dice, ActorCharisma, 0)
     elif user_choice == 2:
-        pass_result = pass_challenge(6, dice, ActorDexterity, 0)
-        return pass_result
+        pass_result = pass_challenge(Difficutly_6, dice, ActorDexterity, 0)
     elif user_choice == 3:
-        return True
+        pass_result = pass_challenge(Difficutly_5, dice, ActorCombat, 0)
+    return pass_result
 
 # Challange 3 runs here
-def Challenge_3(user_choice, dice):
+def Challenge_3_FindVault(user_choice, dice):
+    Difficutly_5 = 5
+    Difficutly_3 = 3
     if user_choice == 1:
-        pass_result = pass_challenge(5, dice, ActorIntelligence, 0)
-        return pass_result
+        pass_result = pass_challenge(Difficutly_5, dice, ActorIntelligence, 0)
     elif user_choice == 2:
-        pass_result = pass_challenge(3, dice, ActorCombat, 0)
-        return pass_result
+        pass_result = pass_challenge(Difficutly_3, dice, ActorCombat, 0)
+    return pass_result
 
 # Challange 4 runs here
-def Challenge_4(user_choice, dice):
+def Challenge_4_OpenVault(user_choice, dice):
+    Difficutly_7 = 7
     user_choice = 1
     if user_choice == 1:
-        pass_result = pass_challenge(7, dice, ActorIntelligence, ActorDexterity)
-        return pass_result
+        pass_result = pass_challenge(Difficutly_7, dice, ActorIntelligence, ActorDexterity)
+    elif user_choice == 2:
+        pass_result = pass_challenge(Difficutly_7, dice, ActorIntelligence, ActorDexterity)    
+    return pass_result
 
 # Challange 5 runs here
-def Challenge_5(user_choice, dice):
+def Challenge_5_EscapeBase(user_choice, dice):
+    Difficutly_7 = 7
+    Difficutly_6 = 6
     if user_choice == 1:
-        pass_result = pass_challenge(7, dice, ActorDexterity, 0)
-        return pass_result
+        pass_result = pass_challenge(Difficutly_7, dice, ActorDexterity, 0)
     elif user_choice == 2:
-        pass_result = pass_challenge(6, dice, ActorCharisma, 0)
-        return pass_result
+        pass_result = pass_challenge(Difficutly_6, dice, ActorCharisma, 0)
+    return pass_result
 
 # sets the role of TheActor in the game
 def SetTheActor (TheCharacter):
@@ -149,13 +159,9 @@ def GetTheCharacterAtributes():
     return BuildTheString
 
 
-def WarningCount(pass_result, NoOfWarnings):
+def UpdateWarningCount(pass_result):
+    global NoOfWarnings
     if pass_result == False:
-        NoOfWarnings = NoOfWarnings + 1
-        return NoOfWarnings
-    elif pass_result == True:
-        return NoOfWarnings
+        NoOfWarnings += 1
 
-def FailWarning(NoOfWarning):
-    if NoOfWarnings == 3:
-        return
+    return NoOfWarnings
