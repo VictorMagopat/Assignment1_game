@@ -148,3 +148,14 @@ def GetTheCharacterAtributes():
     BuildTheString += "; Combat: " + str(ActorCombat) + "]"
     return BuildTheString
 
+
+def WarningCount(pass_result, NoOfWarnings):
+    if pass_result == False:
+        NoOfWarnings = NoOfWarnings + 1
+        return NoOfWarnings
+    elif pass_result == True:
+        return NoOfWarnings
+
+def FailWarning(NoOfWarning):
+    if NoOfWarnings == 3:
+        return

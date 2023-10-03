@@ -58,7 +58,7 @@ ThisIsChallege_5 = """
 # the user is choosing to play the game or exit
 def StartMenu():
       while True:
-            menu_start = input("Would you like to start the game: ")
+            menu_start = input("Would you like to start the game (y/n): ")
             if menu_start == "y" or  menu_start == "Y" or  menu_start == "Yes":
                   return True  
             elif menu_start == "n" or  menu_start == "N" or  menu_start == "No": 
@@ -110,6 +110,13 @@ def SelectionMenu(max_posible):
             else:
                 print("Please enter: <1>, <2> or <3>") 
 
+
+
+def FailWarningMessage():
+    NoOfWarning = Game.GetNoOfWarnings()
+    if NoOfWarning == 3:
+        print("to do")
+        
 
 # pause until the Enter key is pressed
 def PressEnterToContinuue():
