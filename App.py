@@ -126,16 +126,8 @@ def SelectionMenu(max_posible):
             else:
                 print("Please enter: <1>, <2> or <3>") 
 
-
-
-def FailWarningMessage():
-    NoOfWarning = Game.GetNoOfWarnings()
-    if NoOfWarning == 3:
-        print("to do")
-        
-
 # pause until the Enter key is pressed
-def PressEnterToContinuue():
+def PressEnterToContinue():
       WaitHere = input("Press <Enter> to continue")
 
 # roll the dice
@@ -209,12 +201,12 @@ while True:
             ActiveMission = 0
     
         Game.SetCurrentChallenge(RunChallenge)
-        PressEnterToContinuue()
+#       PressEnterToContinue()
     
     if (Health <= 0) or (Warnings >= 3):
         print("You failed this mission.")
     else:
         print("You succesfully completed the mission!")
       
-    PressEnterToContinuue()
+    PressEnterToContinue()
     
