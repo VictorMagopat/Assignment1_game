@@ -1,6 +1,6 @@
-#This is the Role2.py file
+# This is the TheThief.py file.
+# Author: Victor Magopat
 # This file implements the data and logic associated with "The Thief".
-
 
 # the character in this game
 IamTheThief = "I am The Thief!"

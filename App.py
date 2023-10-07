@@ -1,7 +1,9 @@
-#This is the App.py file. Created 2023.09.29
-
-# This file implements the interaction with the user.
-# Sends the user's input to the game engine.
+# This is the App.py file. Created 2023.09.29
+# Author: Victor Magopat
+# This file implements the interaction between the the user and the game.
+# The user is presented with a menu to start the game. A menu to select the character.
+# There are 5 challenges and a menu is presented for the player to select from.
+# The user's input is sent to the game engine for processing.
 
 import Game
 import random
@@ -71,7 +73,7 @@ MenuChallege_5_EscapeBase = """
       <1> Sneak out
       <2> Bluff past"""
 
-# the user is choosing to play the game or exit
+# this is the StarMenu where the user is choosing to play the game or exit.
 def StartMenu():
       while True:
             menu_start = input("Would you like to start the game (y/n): ")
@@ -98,10 +100,11 @@ def CharacterMenu():
             else:
                   print("Please enter: <1> for The Spy or <2> for The Thief. [q - quit]")                  
 
-# the user selects the option
-def SelectionMenu(max_posible):
+# the user selects an option based on the menu presented earlier. E.g. MenuChallenge_n()
+# Returns [1,2] or [1,2,3]
+def SelectionMenu(max_possible):
     while True:        
-        if max_posible == 2:
+        if max_possible == 2:
             print("You can choose 1 or 2")
             menu_start = input("What is your selection?  ")
             if menu_start == "1":
@@ -112,7 +115,7 @@ def SelectionMenu(max_posible):
                 exit()
             else:
                 print("Please enter: <1> or <2> ") 
-        else: 
+        elif max_possible: 
             print("You can choose 1, 2 or 3")
             menu_start = input("What is your selection?  ")
             if menu_start == "1":
@@ -125,12 +128,15 @@ def SelectionMenu(max_posible):
                 exit()
             else:
                 print("Please enter: <1>, <2> or <3>") 
+        else:
+             print("This is an invalid entry")
+             exit()
 
 # pause until the Enter key is pressed
 def PressEnterToContinue():
       WaitHere = input("Press <Enter> to continue")
 
-# roll the dice
+# roll the dice and returns the value
 def RollTheDice():
       WaitHere = input("Press <Enter> to run the dice")
       dice = random.randrange(1,6)
@@ -155,14 +161,26 @@ while True:
     CharacterAttributes = Game.GetTheCharacterAtributes()
     print(CharacterAttributes)
     
+    # index for current challenge
     RunChallenge = 1
     Game.SetCurrentChallenge(RunChallenge);
+    
+    # counts the warnings. Increments after each failed challenge.
     Warnings = 0
     Game.SetNoOfWarnings(Warnings)
+    
+    # current state of the character. Will be used for future development
+    # not used in this version.
     Health = Game.GetActorHealth()
+
+    # flag to indicate that the game is active.
     ActiveMission = 1
+    # holds the result of the last RollTheDice call
     Dice = 1
+    # holds the result of the last challenge.
     ChallengeResult = False
+
+    # the main loop start here
     while ActiveMission == 1:
         if RunChallenge == 1:
             print(MenuChallege_1_InfiltrateBase)

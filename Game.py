@@ -1,4 +1,7 @@
 # This file is Game.py created on 2023.09.29
+# Author: Victor Magopat
+# This module contains the game engine and the required functions.
+
 # import all modules needed 
 import random
 import TheSpy
@@ -56,67 +59,84 @@ def pass_challenge(difficulty, dice, attribute_1, attribute_2):
     else:
         return False
 
-# Challange 1: enter the base. runs here
+# Challange 1: enter the base is processed here. Returns True for pass and False for failed.
 def Challenge_1_EnterBase(user_choice, dice):
-    # constants for difficulty 
-    Difficutly_5 = 5
-    Difficutly_4 = 4
+    # define constants for difficulty level
+    DifficutlyLevel_5 = 5
+    DifficutlyLevel_4 = 4
+    # holds the result of the challenge. The default is False.
+    pass_result = False
+
     if user_choice == 1:
-#
-        pass_result = pass_challenge(Difficutly_5, dice, ActorDexterity, 0)
+        pass_result = pass_challenge(DifficutlyLevel_5, dice, ActorDexterity, 0)
     elif user_choice == 2:
-        pass_result = pass_challenge(Difficutly_4, dice, ActorDexterity, 0)
+        pass_result = pass_challenge(DifficutlyLevel_4, dice, ActorDexterity, 0)
     elif user_choice == 3:
-# pass for the spy due to working there
+    # pass for the spy due to working there
         if TheActor== 1:
            pass_result = True
         elif TheActor== 2:
            pass_result = False
     return pass_result
 
-# Challange 2: evade the gaurds. runs here
+# Challange 2: evade the gaurds is processed here. Returns True for pass and False for failed.
 def Challenge_2_EvadeGuards(user_choice, dice):
-    Difficutly_5 = 5
-    Difficutly_6 = 6
+    # define constants for difficulty level
+    DifficutlyLevel_5 = 5
+    DifficutlyLevel_6 = 6
+    # holds the result of the challenge. The default is False.
+    pass_result = False
+    
     if user_choice == 1:
-        pass_result = pass_challenge(Difficutly_5, dice, ActorCharisma, 0)
+        pass_result = pass_challenge(DifficutlyLevel_5, dice, ActorCharisma, 0)
     elif user_choice == 2:
-        pass_result = pass_challenge(Difficutly_6, dice, ActorDexterity, 0)
+        pass_result = pass_challenge(DifficutlyLevel_6, dice, ActorDexterity, 0)
     elif user_choice == 3:
-        pass_result = pass_challenge(Difficutly_5, dice, ActorCombat, 0)
+        pass_result = pass_challenge(DifficutlyLevel_5, dice, ActorCombat, 0)
     return pass_result
 
-# Challange 3: Find the vault. runs here
+# Challange 3: Find the vault is processed here. Returns True for pass and False for failed.
 def Challenge_3_FindVault(user_choice, dice):
-    Difficutly_5 = 5
-    Difficutly_3 = 3
+    # define constants for difficulty level
+    DifficutlyLevel_5 = 5
+    DifficutlyLevel_3 = 3
+    # holds the result of the challenge. The default is False.  
+    pass_result = False  
+    
     if user_choice == 1:
-        pass_result = pass_challenge(Difficutly_5, dice, ActorIntelligence, 0)
+        pass_result = pass_challenge(DifficutlyLevel_5, dice, ActorIntelligence, 0)
     elif user_choice == 2:
-        pass_result = pass_challenge(Difficutly_3, dice, ActorCombat, 0)
+        pass_result = pass_challenge(DifficutlyLevel_3, dice, ActorCombat, 0)
     return pass_result
 
-# Challange 4: open the vault. runs here
+# Challange 4: open the vaultis processed here. Returns True for pass and False for failed.
 def Challenge_4_OpenVault(user_choice, dice):
-    Difficutly_7 = 7
-    user_choice = 1
+    # define constants for difficulty level
+    DifficutlyLevel_7 = 7
+    # holds the result of the challenge. The default is False.  
+    pass_result = False
+
     if user_choice == 1:
-        pass_result = pass_challenge(Difficutly_7, dice, ActorIntelligence, ActorDexterity)
+        pass_result = pass_challenge(DifficutlyLevel_7, dice, ActorIntelligence, ActorDexterity)
     elif user_choice == 2:
-        pass_result = pass_challenge(Difficutly_7, dice, ActorIntelligence, ActorDexterity)    
+        pass_result = pass_challenge(DifficutlyLevel_7, dice, ActorIntelligence, ActorDexterity)    
     return pass_result
 
-# Challange 5: Escape enemy base. runs here
+# Challange 5: Escape enemy base is processed here. Returns True for pass and False for failed.
 def Challenge_5_EscapeBase(user_choice, dice):
-    Difficutly_7 = 7
-    Difficutly_6 = 6
+    # define constants for difficulty level
+    DifficutlyLevel_7 = 7
+    DifficutlyLevel_6 = 6
+    # holds the result of the challenge. The default is False.  
+    pass_result = False
+
     if user_choice == 1:
-        pass_result = pass_challenge(Difficutly_7, dice, ActorDexterity, 0)
+        pass_result = pass_challenge(DifficutlyLevel_7, dice, ActorDexterity, 0)
     elif user_choice == 2:
-        pass_result = pass_challenge(Difficutly_6, dice, ActorCharisma, 0)
+        pass_result = pass_challenge(DifficutlyLevel_6, dice, ActorCharisma, 0)
     return pass_result
 
-# sets the role of TheActor in the game
+# sets the role of TheActor in the game based on the input TheCharacter.
 def SetTheActor (TheCharacter):
     global TheActor
     global ActorRole
@@ -128,7 +148,7 @@ def SetTheActor (TheCharacter):
 
     SetNoOfWarnings(0)
     SetCurrentChallenge(1)
-#sets the player character states equal to the spy
+# sets the player attributes as The Spy
     if TheCharacter == 1:
         TheActor = 1
         ActorRole = TheSpy.WhatIsYourCharacter()
@@ -137,7 +157,7 @@ def SetTheActor (TheCharacter):
         ActorIntelligence = TheSpy.WhatIsYourIntelligence()
         ActorCharisma	= TheSpy.WhatIsYourCharisma()
         ActorCombat = TheSpy.WhatIsYourCombat()
-#sets the player character states to the Thief
+# sets the player attributes as The Thief
     elif TheCharacter == 2:
         TheActor = 2
         ActorRole = TheThief.WhatIsYourCharacter()
@@ -147,13 +167,13 @@ def SetTheActor (TheCharacter):
         ActorIntelligence = TheThief.WhatIsYourIntelligence()
         ActorCharisma	= TheThief.WhatIsYourCharisma()
         ActorCombat = TheThief.WhatIsYourCombat()
-#repeat until proper input is given
+# signal an error, this point should never be reached.
     else:
         TheCharacter = 0
         ActorRole = "Invalid value for the Actor."
  
 
-# retrieve the attributes of the character and returns a string
+# returns a string that contains the attributes of the current character.
 def GetTheCharacterAtributes():
     BuildTheString = " These are my attributes:\n"
     BuildTheString += " [ Health: " + str(ActorHealth)
@@ -163,7 +183,7 @@ def GetTheCharacterAtributes():
     BuildTheString += "; Combat: " + str(ActorCombat) + "]"
     return BuildTheString
 
-# Increases the warning count by 1 if the player failed
+# Increases the warning count by 1 if the player failed, pass_result is false.
 def UpdateWarningCount(pass_result):
     global NoOfWarnings
     if pass_result == False:

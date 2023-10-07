@@ -1,4 +1,5 @@
-#This is the Role1.py file.
+# This is the TheSpy.py file.
+# Author: Victor Magopat
 # This file implements the data and logic associated with "The Spy".
 
 # the character in this game
