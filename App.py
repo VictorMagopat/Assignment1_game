@@ -115,7 +115,7 @@ def SelectionMenu(max_possible):
                 exit()
             else:
                 print("Please enter: <1> or <2> ") 
-        elif max_possible: 
+        elif max_possible == 3: 
             print("You can choose 1, 2 or 3")
             menu_start = input("What is your selection?  ")
             if menu_start == "1":
