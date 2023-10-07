@@ -1,4 +1,5 @@
 # This file is Game.py created on 2023.09.29
+# import all modules needed 
 import random
 import TheSpy
 import TheThief
@@ -55,23 +56,25 @@ def pass_challenge(difficulty, dice, attribute_1, attribute_2):
     else:
         return False
 
-# Challange 1 runs here
+# Challange 1: enter the base. runs here
 def Challenge_1_EnterBase(user_choice, dice):
-    # constants for difficulty
+    # constants for difficulty 
     Difficutly_5 = 5
     Difficutly_4 = 4
     if user_choice == 1:
+#
         pass_result = pass_challenge(Difficutly_5, dice, ActorDexterity, 0)
     elif user_choice == 2:
         pass_result = pass_challenge(Difficutly_4, dice, ActorDexterity, 0)
     elif user_choice == 3:
+# pass for the spy due to working there
         if TheActor== 1:
            pass_result = True
         elif TheActor== 2:
            pass_result = False
     return pass_result
 
-# Challange 2 runs here
+# Challange 2: evade the gaurds. runs here
 def Challenge_2_EvadeGuards(user_choice, dice):
     Difficutly_5 = 5
     Difficutly_6 = 6
@@ -83,7 +86,7 @@ def Challenge_2_EvadeGuards(user_choice, dice):
         pass_result = pass_challenge(Difficutly_5, dice, ActorCombat, 0)
     return pass_result
 
-# Challange 3 runs here
+# Challange 3: Find the vault. runs here
 def Challenge_3_FindVault(user_choice, dice):
     Difficutly_5 = 5
     Difficutly_3 = 3
@@ -93,7 +96,7 @@ def Challenge_3_FindVault(user_choice, dice):
         pass_result = pass_challenge(Difficutly_3, dice, ActorCombat, 0)
     return pass_result
 
-# Challange 4 runs here
+# Challange 4: open the vault. runs here
 def Challenge_4_OpenVault(user_choice, dice):
     Difficutly_7 = 7
     user_choice = 1
@@ -103,7 +106,7 @@ def Challenge_4_OpenVault(user_choice, dice):
         pass_result = pass_challenge(Difficutly_7, dice, ActorIntelligence, ActorDexterity)    
     return pass_result
 
-# Challange 5 runs here
+# Challange 5: Escape enemy base. runs here
 def Challenge_5_EscapeBase(user_choice, dice):
     Difficutly_7 = 7
     Difficutly_6 = 6
@@ -125,7 +128,7 @@ def SetTheActor (TheCharacter):
 
     SetNoOfWarnings(0)
     SetCurrentChallenge(1)
-
+#sets the player character states equal to the spy
     if TheCharacter == 1:
         TheActor = 1
         ActorRole = TheSpy.WhatIsYourCharacter()
@@ -134,6 +137,7 @@ def SetTheActor (TheCharacter):
         ActorIntelligence = TheSpy.WhatIsYourIntelligence()
         ActorCharisma	= TheSpy.WhatIsYourCharisma()
         ActorCombat = TheSpy.WhatIsYourCombat()
+#sets the player character states to the Thief
     elif TheCharacter == 2:
         TheActor = 2
         ActorRole = TheThief.WhatIsYourCharacter()
@@ -143,6 +147,7 @@ def SetTheActor (TheCharacter):
         ActorIntelligence = TheThief.WhatIsYourIntelligence()
         ActorCharisma	= TheThief.WhatIsYourCharisma()
         ActorCombat = TheThief.WhatIsYourCombat()
+#repeat until proper input is given
     else:
         TheCharacter = 0
         ActorRole = "Invalid value for the Actor."
@@ -158,7 +163,7 @@ def GetTheCharacterAtributes():
     BuildTheString += "; Combat: " + str(ActorCombat) + "]"
     return BuildTheString
 
-
+# Increases the warning count by 1 if the player failed
 def UpdateWarningCount(pass_result):
     global NoOfWarnings
     if pass_result == False:

@@ -6,10 +6,10 @@
 IamTheThief = "I am The Thief!"
 
 #The Thief attributes
-TheThiefHealth = 3
+TheThiefHealth = 7
 TheThiefDexterity = 2
 TheThiefIntelligence = 2
-TheThiefCharisma	= 0
+TheThiefCharisma = -2
 TheThiefCombat = 2
 
 # returns the function of this character
